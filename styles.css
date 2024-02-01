@@ -8,6 +8,10 @@ h1{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.hide{
+    display: none;
+}
+
 #myCanvas{
     background-color: #2a5;
 }

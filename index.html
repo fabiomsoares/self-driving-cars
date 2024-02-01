@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>The Virtual World Editor</title>
+        <title>The Fabio's Virtual World Editor</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>The Virtual World Editor</h1>
+        <h1>The Fabio's Virtual World Editor</h1>
         <canvas id="myCanvas"></canvas>
+        <div id="controls">
+            <button onclick="addRandomPoint()">Add Point</button>
+            <button onclick="addRandomSegment()">Add Segment</button>
+            <button onclick="removeRandomSegment()">Remove Segment</button>
+            <button onclick="removeRandomPoint()">Remove Point</button>
+            <button onclick="removeAll()">Remove All</button>  
+        </div>
+
         <script src="js/math/graph.js"></script>
+        <script src="js/primitives/point.js"></script>
+        <script src="js/primitives/segment.js"></script>
+        <script src="js/script.js"></script>
         <script>
+
+
+
             myCanvas.width = 600;
             myCanvas.height = 600;
 
-
             const ctx = myCanvas.getContext("2d");
-            const graph = new Graph();
+
+            const p1 = new Point(200, 200);
+            const p2 = new Point(500, 200);
+            const p3 = new Point(400, 400);
+            const p4 = new Point(100, 300);
+
+            const s1 = new Segment(p1, p2);
+            const s2 = new Segment(p1, p3);
+            const s3 = new Segment(p1, p4);
+            const s4 = new Segment(p2, p3);
+            
+
+            const graph = new Graph([p1, p2, p3, p4], [s1, s2, s3, s4]);
             graph.draw(ctx);
         </script>
     </body>
