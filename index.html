@@ -19,6 +19,7 @@
             <button onclick="save()">&#x1F4BE;</button>
         </div>
 
+        <script src="js/world.js"></script>
         <script src="js/grapheditor.js"></script>
         <script src="js/viewport.js"></script>
         <script src="js/math/utils.js"></script>
@@ -42,6 +43,9 @@
             const graph = graphInfo 
                 ? Graph.load(graphInfo)
                 : new Graph();
+            
+            const world = new World(graph);
+
             const viewport = new Viewport(myCanvas);
             const graphEditor = new GraphEditor(viewport, graph);
 
@@ -49,8 +53,10 @@
 
             function animate() {
                 viewport.reset();
+                world.generate();
+                world.draw(ctx);
                 graphEditor.display();
-                new Envelope(graph.segments[0], 40, 6 ).draw(ctx);
+                //new Envelope(graph.segments[0], 60, 3 ).draw(ctx);
                 requestAnimationFrame(animate);
             }
 
