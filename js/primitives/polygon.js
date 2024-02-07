@@ -11,7 +11,7 @@ class Polygon {
 
     static multiBreak(polys) {
         for (let i = 0; i < polys.length - 1; i++) {
-            for (let j = 1 + 1; j < polys.length; j++) {
+            for (let j = i + 1; j < polys.length; j++) {
                 Polygon.break(polys[i], polys[j]);
             }
         }
@@ -34,7 +34,7 @@ class Polygon {
                     let aux = segs1[i].p2;
                     segs1[i].p2 = point;
                     segs1.splice(i + 1, 0, new Segment(point, aux));
-                    aux = segs2[i].p2;
+                    aux = segs2[j].p2;
                     segs2[j].p2 = point;
                     segs2.splice(j + 1, 0, new Segment(point, aux));
                 }
